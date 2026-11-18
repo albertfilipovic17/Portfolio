@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prtfolio</title>
+    <title>Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <header>
@@ -16,15 +17,31 @@
             <a href="#projekt">Projekt</a>
             <a href="#kontakt">Kontakt</a>
         </nav>
+
+        <button id="theme-toggle" type="button" > Mörkt tema </button>
     </header>
 
     <main>
-        <section>
-            
-            <h1>Hej, jag heter Ditt namn!</h1>
-            <p>Jag studerar webbutveckling och bygger min första portfolio.</p>
-            <a class="button" href="#projekt">Se mina projekt</a>
-        </section>
+     <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-text">
+                <h1>Hej, jag heter Albert Filipovic!</h1>
+                <p>
+                 Jag studerar systemutveckling och bygger
+                 min första portfolio.
+                </p>
+                <a class="button" href="#projekt">Se mina projekt</a>
+            </div>
+
+            <img
+                class="profile-image"
+                src="images/profil.png"
+                alt="Porträtt av Albert Filipovic"
+                width="280"
+                height="280"
+            >
+        </div>
+     </section>
 
         <section id="om-mig">
             <h2>Om mig</h2>
@@ -42,7 +59,26 @@
 
         <section id="projekt">
             <h2>Projekt</h2>
-            <p>Här kommer jag att visa mina projekt.</p>
+
+            <div class="project-grid">
+                <article class="project-card">
+                    <h3>C# och .NET</h3>
+                    <p>
+                        Jag har byggt ett bibliotekshanteringssytem i C#.
+
+                    </p>
+                    <p class="project-status">Status: Klar.</p>
+                </article>
+
+                  <article class="project-card">
+                    <h3>HTML, CSS och JavaScript</h3>
+                    <p>
+                        Jag bygger en personlig webbplats med HTML,
+                        CSS och JavaScript.
+                    </p>
+                    <p class="project-status">Status: under utveckling.</p>
+                </article>
+            </div>
         </section>
 
         <section id="kontakt">
