@@ -37,9 +37,19 @@ header {
     z-index: 10;
 }
 
-header p {
-    margin: 0;
+.site-logo {
+    color: #ffffff;
     font-weight: bold;
+    text-decoration: none;
+}
+
+.site-logo:hover {
+    text-decoration: underline;
+}
+
+.site-logo:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 4px;
 }
 
 nav {
@@ -217,8 +227,8 @@ body.dark-theme .hero {
     background-image:
         linear-gradient(to bottom, transparent 65%, #181818 100%),
         linear-gradient(
-            rgba(24, 24, 24, 0.85),
-            rgba(24, 24, 24, 0.85)
+            rgba(24, 24, 24, 0.6),
+            rgba(24, 24, 24, 0.6)
         ),
         url("images/bakgrund.png");
 }
