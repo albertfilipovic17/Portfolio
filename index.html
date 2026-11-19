@@ -48,20 +48,80 @@
             <p>Här kommer jag att berätta om mig själv och mina intressen.</p>
         </section>
 
-        <section id="kompetenser">
-            <h2>Kompetenser</h2>
-            <ul>
-                <li>HTML – strukturera innehåll</li>
-                <li>CSS – formge webbsidor</li>
-                <li>JavaScript – skapa interaktivitet</li>
-            </ul>
-        </section>
+<section id="kompetenser">
+    <h2>Kompetenser</h2>
+
+    <div class="skills-grid">
+        <article class="project-card skill-card">
+              <img class="skill-icon" src="images/csharp-original.svg"
+         alt="" width="64" height="64">
+            <h3>C#</h3>
+            <p>
+                Ett programmeringsspråk för att bygga
+                applikationer med bland annat klasser och objekt.
+            </p>
+        </article>
+
+        <article class="project-card skill-card">
+              <img class="skill-icon" src="images/dot-net-original.svg"
+         alt="" width="64" height="64">
+            <h3>.NET</h3>
+            <p>
+                En utvecklingsplattform för att bygga och
+                köra exempelvis webbappar och API:er.
+            </p>
+        </article>
+        <article class="project-card skill-card">
+              <img class="skill-icon" src="images/html5-original.svg"
+         alt="" width="64" height="64">
+            <h3>HTML</h3>
+            <p>
+                Ger webbsidan struktur med rubriker,
+                länkar, bilder och formulär.
+            </p>
+        </article>
+
+        <article class="project-card skill-card">
+              <img class="skill-icon" src="images/css3-original.svg"
+         alt="" width="64" height="64">
+            <h3>CSS</h3>
+            <p>
+                Styr webbsidans utseende och anpassar
+                layouten till olika skärmstorlekar.
+            </p>
+        </article>
+
+        <article class="project-card skill-card">
+                <img class="skill-icon" src="images/javascript-original.svg"
+         alt="" width="64" height="64">
+            <h3>JavaScript</h3>
+            <p>
+                Skapar interaktivitet genom att hantera
+                händelser och uppdatera sidans innehåll.
+            </p>
+        </article>
+
+        <article class="project-card skill-card">
+            <span class="skill-icon ai-icon" aria-hidden="true">🤖</span>
+            <h3>AI</h3>
+            <p>
+                Kan användas som stöd för idéer,
+                kodförklaringar och felsökning.
+                Resultaten behöver granskas och testas.
+            </p>
+        </article>
+    </div>
+</section>
 
         <section id="projekt">
             <h2>Projekt</h2>
 
             <div class="project-grid">
                 <article class="project-card">
+                    <img class="skill-icon" src="images/csharp-original.svg"
+         alt="" width="64" height="64">
+                          <img class="skill-icon" src="images/dot-net-original.svg"
+         alt="" width="64" height="64">
                     <h3>C# och .NET</h3>
                     <p>
                         Jag har byggt ett bibliotekshanteringssytem i C#.
@@ -71,6 +131,12 @@
                 </article>
 
                   <article class="project-card">
+                               <img class="skill-icon" src="images/html5-original.svg"
+         alt="" width="64" height="64">
+                  <img class="skill-icon" src="images/css3-original.svg"
+         alt="" width="64" height="64">
+         <img class="skill-icon" src="images/javascript-original.svg"
+         alt="" width="64" height="64">
                     <h3>HTML, CSS och JavaScript</h3>
                     <p>
                         Jag bygger en personlig webbplats med HTML,
@@ -81,14 +147,68 @@
             </div>
         </section>
 
+
         <section id="kontakt">
-            <h2>Kontakt</h2>
-            <p>Här kommer mina kontaktuppgifter att finnas.</p>
-        </section>
+    <div class="contact-layout">
+        <div class="contact-intro">
+            <h2>Har du en idé?</h2>
+            <p>
+                Vill du prata om ett projekt, webbutveckling
+                eller ett framtida samarbete?
+                Skriv gärna ett meddelande.
+            </p>
+        </div>
+              <form class="contact-form">
+             <div class="form-field">
+                 <label for="name">Namn (obligatoriskt)</label>
+                 <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        autocomplete="name"
+                        required
+                    >
+             </div>
+
+              <div class="form-field">
+                  <label for="email">Mejladress (obligatoriskt)</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    autocomplete="email"
+                    required
+                  >
+             </div>
+
+        <div class="form-field">
+            <label for="message">Meddelande (obligatoriskt)</label>
+            <textarea
+                id="message"
+                name="message"
+                rows="4"
+                required
+            ></textarea>
+        </div>
+        <button type="button" disabled>Skicka meddelande</button>
+    </form>  
+    </div>
+</section>
+
     </main>
 
-    <footer>
-        <p>Min portfolio – Ditt namn</p>
-    </footer>
+    <footer class="site-footer">
+    <div class="footer-inner">
+        <p>© Albert Filipovic 2026</p>
+
+        <nav aria-label="Sidfotsnavigation">
+            <a href="mailto:Albert.Filipovic@outlook.com"> E-mail </a> 
+            <a href="tel:+46735233605"> Telefon </a>
+            <a href="https://github.com/albertfilipovic17">GitHub </a>
+            <a href="https://www.linkedin.com/in/albert-filipovic-b261a9106/">LinkedIn </a>
+            <a href="#toppen">Till toppen ↑</a>
+        </nav>
+    </div>
+</footer>
 </body>
 </html>
