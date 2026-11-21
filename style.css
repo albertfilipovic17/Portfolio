@@ -504,3 +504,21 @@ main > #kompetenser {
 .skill-card .ai-icon {
     font-size: 36px;
 }
+
+/* Kontaktformulär */
+.contact-form button:not(:disabled) {
+    cursor: pointer;
+}
+
+.contact-form button:not(:disabled):hover {
+    background-color: #1e40af;
+}
+
+.contact-form button:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 4px;
+}
+
+body.dark-theme .contact-form button:focus-visible {
+    outline-color: #93c5fd;
+}
