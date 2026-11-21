@@ -75,8 +75,9 @@
 
     <div class="skills-grid">
         <article class="project-card skill-card">
-              <img class="skill-icon" src="images/csharp-original.svg"
-         alt="" width="64" height="64">
+            <button class="skill-image-button" type="button" aria-label="Förstora C#">
+              <img class="skill-icon" src="images/csharp-original.svg" alt="" width="64" height="64">
+            </button>
             <h3>C#</h3>
             <p>
                 Ett programmeringsspråk för att bygga
@@ -85,8 +86,9 @@
         </article>
 
         <article class="project-card skill-card">
-              <img class="skill-icon" src="images/dot-net-original.svg"
-         alt="" width="64" height="64">
+            <button class="skill-image-button" type="button" aria-label="Förstora .NET">
+              <img class="skill-icon" src="images/dot-net-original.svg" alt="" width="64" height="64">
+            </button>
             <h3>.NET</h3>
             <p>
                 En utvecklingsplattform för att bygga och
@@ -94,8 +96,9 @@
             </p>
         </article>
         <article class="project-card skill-card">
-              <img class="skill-icon" src="images/html5-original.svg"
-         alt="" width="64" height="64">
+            <button class="skill-image-button" type="button" aria-label="Förstora HTML">
+              <img class="skill-icon" src="images/html5-original.svg" alt="" width="64" height="64">
+            </button>
             <h3>HTML</h3>
             <p>
                 Ger webbsidan struktur med rubriker,
@@ -104,8 +107,9 @@
         </article>
 
         <article class="project-card skill-card">
-              <img class="skill-icon" src="images/css3-original.svg"
-         alt="" width="64" height="64">
+            <button class="skill-image-button" type="button" aria-label="Förstora CSS">
+              <img class="skill-icon" src="images/css3-original.svg" alt="" width="64" height="64">
+            </button>
             <h3>CSS</h3>
             <p>
                 Styr webbsidans utseende och anpassar
@@ -114,9 +118,10 @@
         </article>
 
         <article class="project-card skill-card">
-                <img class="skill-icon" src="images/javascript-original.svg"
-         alt="" width="64" height="64">
-            <h3>JavaScript</h3>
+            <button class="skill-image-button" type="button" aria-label="Förstora JavaScript">
+                <img class="skill-icon" src="images/javascript-original.svg" alt="" width="64" height="64">
+            </button>
+            <h3>JavaScript</h3> 
             <p>
                 Skapar interaktivitet genom att hantera
                 händelser och uppdatera sidans innehåll.
@@ -124,7 +129,9 @@
         </article>
 
         <article class="project-card skill-card">
-            <span class="skill-icon ai-icon" aria-hidden="true">🤖</span>
+            <button class="skill-image-button" type="button" aria-label="Förstora AI">
+                <span class="skill-icon ai-icon" aria-hidden="true">🤖</span>
+            </button>
             <h3>AI</h3>
             <p>
                 Kan användas som stöd för idéer,
@@ -250,5 +257,14 @@
         </nav>
     </div>
 </footer>
+
+<dialog id="image-dialog" aria-label="Förstorad kompetensbild">
+    <button id="close-image-dialog" type="button" autofocus>
+        Stäng
+    </button>
+
+    <div id="image-dialog-content"></div>
+</dialog>
+
 </body>
 </html>

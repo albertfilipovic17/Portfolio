@@ -51,3 +51,26 @@ async function sendMessage(event) {
 }
 
 contactForm.addEventListener("submit", sendMessage);
+
+//Kompetensbilder dialog
+const imageDialog = document.querySelector("#image-dialog");
+const dialogContent = document.querySelector("#image-dialog-content");
+const closeImageDialog = document.querySelector("#close-image-dialog");
+const skillImageButtons = document.querySelectorAll(".skill-image-button");
+
+function openSkillImage(event) {
+    const button = event.currentTarget;
+    const image = button.querySelector(".skill-icon");
+    const imageCopy = image.cloneNode(true);
+
+    dialogContent.replaceChildren(imageCopy);
+    imageDialog.showModal();
+}
+
+skillImageButtons.forEach(function (button) {
+    button.addEventListener("click", openSkillImage);
+});
+
+closeImageDialog.addEventListener("click", function () {
+    imageDialog.close();
+});
