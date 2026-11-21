@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
-<body id="toppen">
+<body id="toppen" class="dark-theme">
     <header>
         <a class="site-logo" href="#toppen">Min portfolio</a>
 
@@ -18,7 +18,7 @@
             <a href="#kontakt">Kontakt</a>
         </nav>
 
-        <button id="theme-toggle" type="button" > Mörkt tema </button>
+        <button id="theme-toggle" type="button" > Ljust tema </button>
     </header>
 
     <main>
@@ -43,10 +43,32 @@
         </div>
      </section>
 
-        <section id="om-mig">
-            <h2>Om mig</h2>
-            <p>Här kommer jag att berätta om mig själv och mina intressen.</p>
-        </section>
+<section id="om-mig">
+    <h2>Om mig</h2>
+
+    <p>
+        Jag studerar systemutveckling med inriktning .NET på
+        TUC Yrkeshögskola. Där utvecklar jag mina kunskaper
+        inom C#, programmering och hur man bygger fungerande
+        mjukvarulösningar.
+    </p>
+
+    <p>
+        Sedan tidigare har jag erfarenhet av tillverkning,
+        logistik, Lean och ledarskap. Problemlösning, struktur
+        och ständiga förbättringar har varit en viktig del av
+        mitt arbete — erfarenheter som jag nu tar med mig
+        in i systemutvecklingen.
+    </p>
+
+    <p>
+        Jag vill kombinera min praktiska bakgrund med mitt
+        intresse för teknik och skapa lösningar som förenklar
+        vardagen för användare. Mitt mål är att fortsätta
+        utvecklas som programmerare och bidra till genomtänkta
+        och tillförlitliga system.
+    </p>
+</section>
 
 <section id="kompetenser">
     <h2>Kompetenser</h2>
@@ -113,39 +135,56 @@
     </div>
 </section>
 
-        <section id="projekt">
-            <h2>Projekt</h2>
+<section id="projekt">
+    <h2>Projekt</h2>
 
-            <div class="project-grid">
-                <article class="project-card">
-                    <img class="skill-icon" src="images/csharp-original.svg"
-         alt="" width="64" height="64">
-                          <img class="skill-icon" src="images/dot-net-original.svg"
-         alt="" width="64" height="64">
-                    <h3>C# och .NET</h3>
-                    <p>
-                        Jag har byggt ett bibliotekshanteringssytem i C#.
+    <div class="project-grid">
+        <article class="project-card">
+            <div class="project-logos">
+                <img src="images/csharp-original.svg"
+                     alt="" width="48" height="48">
 
-                    </p>
-                    <p class="project-status">Status: Klar.</p>
-                </article>
-
-                  <article class="project-card">
-                               <img class="skill-icon" src="images/html5-original.svg"
-         alt="" width="64" height="64">
-                  <img class="skill-icon" src="images/css3-original.svg"
-         alt="" width="64" height="64">
-         <img class="skill-icon" src="images/javascript-original.svg"
-         alt="" width="64" height="64">
-                    <h3>HTML, CSS och JavaScript</h3>
-                    <p>
-                        Jag bygger en personlig webbplats med HTML,
-                        CSS och JavaScript.
-                    </p>
-                    <p class="project-status">Status: under utveckling.</p>
-                </article>
+                <img src="images/dot-net-original.svg"
+                     alt="" width="48" height="48">
             </div>
-        </section>
+
+            <h3>C# och .NET</h3>
+            <p>
+                Jag har byggt ett bibliotekshanteringssystem i C#.
+            </p>  
+            <p class="project-status">Status: Klar.</p>      
+            <a class="project-link"
+                 href="https://github.com/albertfilipovic17/Bibliotekshanteringssystem">
+                    Visa koden på GitHub →
+            </a>
+        </article>
+
+        <article class="project-card">
+            <div class="project-logos">
+                <img src="images/html5-original.svg"
+                     alt="" width="48" height="48">
+
+                <img src="images/css3-original.svg"
+                     alt="" width="48" height="48">
+
+                <img src="images/javascript-original.svg"
+                     alt="" width="48" height="48">
+            </div>
+
+            <h3>HTML, CSS och JavaScript</h3>
+            <p>
+                Jag bygger en personlig webbplats med
+                HTML, CSS och JavaScript.
+            </p>
+            <p class="project-status">Status: under utveckling.</p>
+                <a class="project-link"
+                    href="https://github.com/albertfilipovic17/Portfolio">
+                        Visa koden på GitHub →
+                </a>
+            
+        </article>
+    </div>
+</section>
 
 
         <section id="kontakt">
