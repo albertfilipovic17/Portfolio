@@ -1,52 +1,102 @@
 <!DOCTYPE html>
+<!-- Anger att dokumentet använder modern HTML. -->
+
 <html lang="sv">
+<!-- Sidans språk är svenska, vilket bland annat hjälper skärmläsare. -->
+
+<!-- Start Dokumentets inställningar -->
 <head>
+    <!-- Gör att bland annat å, ä och ö visas korrekt. -->
     <meta charset="UTF-8">
+
+    <!-- Anpassar sidans bredd till enhetens skärm. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Namnet som visas i webbläsarens flik. -->
     <title>Portfolio</title>
+
+    <!-- Laddar CSS-filen som styr sidans utseende. -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Laddar JavaScript.
+         defer gör att koden körs när HTML-dokumentet har lästs in. -->
     <script src="script.js" defer></script>
 </head>
-<body id="toppen" class="dark-theme">
-    <header>
-        <a class="site-logo" href="#toppen">Min portfolio</a>
+<!-- Slut Dokumentets inställningar -->
 
-        <button id="menu-toggle" class="menu-toggle" type="button" aria-controls="main-nav" aria-expanded="false"
+<!-- Här börjar sidans innehåll.
+     id="toppen" är målet för länkarna tillbaka till toppen.
+     class="dark-theme" gör att sidan börjar i mörkt tema. -->
+<body id="toppen" class="dark-theme">
+<!-- Start Sidhuvud och navigation -->
+<header>
+    <!-- Logotypen länkar tillbaka till elementet med id="toppen". -->
+    <a class="site-logo" href="#toppen">Min portfolio</a>
+
+    <!-- Knapp för mobilmenyn.
+         aria-controls anger vilken navigation knappen styr.
+         aria-expanded berättar om menyn är öppen eller stängd.
+         JavaScript uppdaterar värdet när besökaren använder knappen. -->
+    <button
+        id="menu-toggle"
+        class="menu-toggle"
+        type="button"
+        aria-controls="main-nav"
+        aria-expanded="false"
     >
+        <!-- Symbolen är dekorativ. Skärmläsare läser texten "Meny". -->
         <span aria-hidden="true">☰</span>
         Meny
     </button>
-        <nav id="main-nav" aria-label="Huvudnavigation">
-            <a href="#om-mig">Om mig</a>
-            <a href="#kompetenser">Kompetenser</a>
-            <a href="#projekt">Projekt</a>
-            <a href="#kontakt">Kontakt</a>
-        </nav>
 
-        <button id="theme-toggle" type="button" > Ljust tema </button>
-    </header>
+    <!-- aria-label ger navigationen ett namn för skärmläsare. -->
+    <nav id="main-nav" aria-label="Huvudnavigation">
+        <!-- Varje länk går till avsnittet med motsvarande id. -->
+        <a href="#om-mig">Om mig</a>
+        <a href="#kompetenser">Kompetenser</a>
+        <a href="#projekt">Projekt</a>
+        <a href="#kontakt">Kontakt</a>
+    </nav>
+
+    <!-- JavaScript växlar temat och uppdaterar knappens text.
+         Texten visar vilket tema besökaren kan byta till. -->
+    <button id="theme-toggle" type="button">Ljust tema</button>
+</header>
+<!-- Slut Sidhuvud och navigation -->
 
     <main>
-     <section class="hero">
-        <div class="hero-inner">
-            <div class="hero-text">
-                <h1>Hej, jag heter Albert Filipovic!</h1>
-                <p>
-                 Jag studerar systemutveckling och bygger
-                 min första portfolio.
-                </p>
-                <a class="button" href="#projekt">Se mina projekt</a>
-            </div>
+<!-- Start Startsida och porträtt -->
+<section class="hero">
+    <!-- Samlar text och porträtt.
+         CSS anpassar deras placering efter skärmens storlek. -->
+    <div class="hero-inner">
+        <div class="hero-text">
+            <!-- Sidans huvudrubrik. Övriga avsnitt använder h2. -->
+            <h1>Hej, jag heter Albert Filipovic!</h1>
 
-            <img
-                class="profile-image"
-                src="images/profil.png"
-                alt="Porträtt av Albert Filipovic"
-                width="280"
-                height="280"
-            >
+            <p>
+                Jag studerar systemutveckling och bygger
+                min första portfolio.
+            </p>
+
+            <!-- En länk som ser ut som en knapp.
+                 Leder till avsnittet med id="projekt". -->
+            <a class="button" href="#projekt">Se mina projekt</a>
         </div>
-     </section>
+
+        <!-- alt beskriver bilden för bland annat skärmläsare.
+             width och height hjälper webbläsaren att reservera
+             utrymme innan bilden har laddats. -->
+        <img
+            class="profile-image"
+            src="images/profil.png"
+            alt="Porträtt av Albert Filipovic"
+            width="280"
+            height="280"
+        >
+    </div>
+</section>
+<!-- Slut Startsida och porträtt -->
 
 <section id="om-mig">
     <h2>Om mig</h2>
@@ -258,7 +308,7 @@
             <a href="tel:+46735233605"> Telefon </a>
             <a href="https://github.com/albertfilipovic17">GitHub </a>
             <a href="https://www.linkedin.com/in/albert-filipovic-b261a9106/">LinkedIn </a>
-            <a href="#toppen">Till toppen ↑</a>
+            <a href="#toppen">Till Toppen ↑</a>
         </nav>
     </div>
 </footer>

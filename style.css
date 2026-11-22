@@ -1,8 +1,12 @@
+/* Start Grundinställningar */
+
 :root {
+    /* Reservvärde. JavaScript uppdaterar till menyns verkliga höjd. */
     --header-height: 100px;
 }
 
 * {
+    /* Padding och kantlinjer räknas in i elementets angivna bredd. */
     box-sizing: border-box;
 }
 
@@ -15,37 +19,77 @@ body {
     line-height: 1.6;
 }
 
+/* JavaScript lägger till eller tar bort klassen dark-theme
+   på body när besökaren byter tema. */
+body.dark-theme {
+    background-color: #181818;
+    color: #f5f5f5;
+}
+/*  Slut grundinställningar */
+
+
+/*  Start Avsnittens layout  */
+
+section {
+    padding: 60px 0;
+
+    /* Avstånd vid hopp till ett avsnitt via en länk. */
+    scroll-margin-top: 100px;
+}
+
+/* Gäller avsnitten direkt i main, förutom startsidan (.hero). */
 main > section:not(.hero) {
     max-width: 1200px;
     margin: 0 auto;
     padding: 32px 20px 48px;
+
+    /* Avsnittet fyller minst skärmhöjden minus menyn.
+       Det kan växa om innehållet behöver mer plats. */
     min-height: calc(100svh - var(--header-height));
+
+    /* Innehållet placeras uppifrån och ner. */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+
+    /* Hindrar menyn från att täcka avsnittets början vid länkhopp. */
     scroll-margin-top: var(--header-height);
 }
 
-section {
-    padding: 60px 0;
-    scroll-margin-top: 100px;
+main > section:not(.hero) h2 {
+    /* Tar bort rubrikens extra marginal ovanför. */
+    margin-top: 0;
 }
 
+/* Slut avsnittens layout */
+
+
+/* Start sidhuvud och navigation  */
+
 header {
+    /* Fördelar logotyp, navigation och temaknapp över raden. */
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    /* Tillåter fler rader när utrymmet inte räcker. */
     flex-wrap: wrap;
     gap: 16px;
     padding: 20px;
+
     background-color: #222222;
     color: #ffffff;
+
+    /* Menyn stannar längst upp när besökaren scrollar. */
     position: sticky;
     top: 0;
     z-index: 10;
+
+    /* Svagt blått sken under menyn. */
     box-shadow: 0 2px 10px rgba(96, 165, 250, 0.3);
 }
 
+/* Logotypen är också en länk till sidans början. */
 .site-logo {
     color: #ffffff;
     font-weight: bold;
@@ -61,6 +105,7 @@ header {
     outline-offset: 4px;
 }
 
+/* Gemensamt för navigationen i sidhuvudet och sidfoten. */
 nav {
     display: flex;
     flex-wrap: wrap;
@@ -77,109 +122,15 @@ nav a:focus-visible {
     text-decoration: underline;
 }
 
+/* Visar vilken länk som är markerad vid tangentbordsnavigation. */
 nav a:focus-visible {
     outline: 2px solid #ffffff;
     outline-offset: 4px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    html {
-        scroll-behavior: smooth;
-    }
-}
-
-.hero {
-    padding: 0;
-    background-image:
-        linear-gradient(to bottom, transparent 65%, #f5f5f5 100%),
-        url("images/bakgrund.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.hero-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 80px 20px;
-    min-height: calc(100svh - var(--header-height));
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 40px;
-}
-
-.hero h1 {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    line-height: 1.2;
-    margin: 0 0 20px;
-}
-
-.hero p {
-    max-width: 55ch;
-    margin: 0 0 30px;
-}
-
-.button {
-    display: inline-block;
-    padding: 12px 24px;
-    background-color: #222222;
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 6px;
-}
-
-.button:hover {
-    background-color: #444444;
-}
-
-.button:focus-visible {
-    outline: 3px solid #222222;
-    outline-offset: 4px;
-}
-
-.project-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 24px;
-}
-
-.project-card {
-    padding: 24px;
-    background-color: #f0f6fc;
-    border: 1px solid #c5d7e8;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-}
-
-.project-card h3 {
-    margin-top: 0;
-}
-
-.project-status {
-    margin-top: auto;
-    margin-bottom: 0;
-}
-
-@media (min-width: 700px) {
-    .project-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-body.dark-theme {
-    background-color: #181818;
-    color: #f5f5f5;
-}
-
-body.dark-theme .project-card {
-    background-color: #202c3a;
-    border-color: #465d75;
-}
-
+/* Knappen som växlar mellan ljust och mörkt tema. */
 #theme-toggle {
-    padding: 5px 12px; 
+    padding: 5px 12px;
     font: inherit;
     background-color: #ffffff;
     color: #222222;
@@ -198,412 +149,7 @@ body.dark-theme .project-card {
     outline-offset: 4px;
 }
 
-body.dark-theme .button {
-    background-color: #f5f5f5;
-    color: #222222;
-}
-
-body.dark-theme .button:hover {
-    background-color: #dddddd;
-}
-
-body.dark-theme .button:focus-visible {
-    outline-color: #ffffff;
-}
-
-.profile-image {
-    display: block;
-    width: 280px;
-    height: 280px;
-    max-width: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    margin: 0;
-    flex-shrink: 0;
-}
-
-@media (min-width: 700px) {
-    .hero-inner {
-        flex-direction: row;
-        align-items: center;
-    }
-
-    .hero-text {
-        flex: 1;
-    }
-}
-
-body.dark-theme .hero {
-    background-image:
-        linear-gradient(to bottom, transparent 65%, #181818 100%),
-        linear-gradient(
-            rgba(24, 24, 24, 0.6),
-            rgba(24, 24, 24, 0.6)
-        ),
-        url("images/bakgrund.png");
-}
-
-/* Sidfot */
-.site-footer {
-    background-color: #222222;
-    color: #ffffff;
-    padding: 32px 20px;
-}
-
-.footer-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    
-}
-
-.footer-inner p {
-    margin: 0;
-}
-
-/* Kontakt */
-.contact-layout {
-    display: grid;
-    gap: 20px;
-    align-items: start;
-    width: 100%;
-}
-
-.contact-intro {
-    text-align: center;
-}
-
-.contact-intro h2 {
-    margin: 0;
-    font-size: clamp(1.8rem, 3vw, 2.5rem);
-    line-height: 1.2;
-}
-
-.contact-intro p {
-    max-width: 45ch;
-    margin: 12px auto 0;
-}
-
-.contact-layout {
-    display: grid;
-    grid-template-columns: 1fr;
-    max-width: 640px;
-    margin: 0 auto;
-    gap: 32px;
-}
-
-
-/* Kontakt */
-.contact-form {
-    display: grid;
-    gap: 14px;
-    min-width: 0;
-}
-
-.form-field {
-    display: grid;
-    gap: 8px;
-}
-
-.form-field label {
-    font-weight: bold;
-}
-
-.form-field input,
-.form-field textarea {
-    width: 100%;
-    padding: 10px 14px;
-    font: inherit;
-    color: #222222;
-    background-color: #ffffff;
-    border: 1px solid #767676;
-    border-radius: 8px;
-}
-
-.form-field textarea {
-    resize: vertical;
-}
-
-.form-field input:focus-visible,
-.form-field textarea:focus-visible {
-    outline: 3px solid #2563eb;
-    outline-offset: 3px;
-}
-
-/* Kontakt */
-.contact-form button {
-    justify-self: start;
-    padding: 14px 24px;
-    font: inherit;
-    font-weight: bold;
-    color: #ffffff;
-    background-color: #1d4ed8;
-    border: 0;
-    border-radius: 8px;
-}
-
-.contact-form button:disabled {
-    background-color: #555555;
-    cursor: not-allowed;
-}
-
-body.dark-theme .form-field input,
-body.dark-theme .form-field textarea {
-    color: #f5f5f5;
-    background-color: #282828;
-    border-color: #999999;
-}
-
-body.dark-theme .form-field input:focus-visible,
-body.dark-theme .form-field textarea:focus-visible {
-    outline-color: #93c5fd;
-}
-
-
-/* Kompetenser */
-.skills-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 24px;
-}
-
-.skill-card p {
-    margin: 0;
-}
-
-@media (min-width: 600px) {
-    .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 1000px) {
-    .skills-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-.skill-icon {
-    display: block;
-    width: 64px;
-    height: 64px;
-    object-fit: contain;
-    margin-bottom: 20px;
-}
-
-.ai-icon {
-    display: grid;
-    place-items: center;
-    font-size: 48px;
-    line-height: 1;
-}
-
-/* Projektlogotyp */
-.project-logos {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    margin-bottom: 20px;
-}
-
-.project-logos img {
-    display: block;
-    width: 48px;
-    height: 48px;
-    object-fit: contain;
-}
-
-@media (hover: hover) and (prefers-reduced-motion: no-preference) {
-    .project-card {
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .project-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 24px rgba(96, 165, 250, 0.22);
-    }
-}
-
-/* Projektlänkar */
-.project-link {
-    display: inline-block;
-    align-self: flex-start;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    padding: 6px 18px;
-    color: #174e85;
-    background-color: #e0edff;
-    border: 0,5px solid #a8c8ed;
-    border-radius: 10px;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-@media (hover: hover) and (prefers-reduced-motion: no-preference) {
-    .project-link {
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .project-link:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 18px rgba(96, 165, 250, 0.4);
-    }
-}
-
-.project-link:focus-visible {
-    outline: 2px solid currentColor;
-    outline-offset: 4px;
-}
-
-body.dark-theme .project-link {
-    color: #dbeafe;
-    background-color: #243d59;
-    border-color: #628bb7;
-}
-
-/* Om mig */
-main > #om-mig {
-    max-width: 70ch;
-    margin: 0 auto;
-    text-align: left;
-}
-
-/* Andra sektioner */
-
-.skill-card {
-    padding: 20px;
-    position: relative;
-}
-
-.skill-card .skill-icon {
-    width: 48px;
-    height: 48px;
-    margin-bottom: 12px;
-}
-
-.skill-card .ai-icon {
-    font-size: 36px;
-}
-
-/* Kontaktformulär */
-.contact-form button:not(:disabled) {
-    cursor: pointer;
-}
-
-.contact-form button:not(:disabled):hover {
-    background-color: #1e40af;
-}
-
-.contact-form button:focus-visible {
-    outline: 3px solid #2563eb;
-    outline-offset: 4px;
-}
-
-body.dark-theme .contact-form button:focus-visible {
-    outline-color: #93c5fd;
-}
-
-/* Kompetensbilder */
-.skill-image-button {
-    align-self: flex-start;
-    padding: 0;
-    margin: 0 0 20px;
-    border: 0;
-    background: transparent;
-    color: inherit;
-    cursor: pointer;
-}
-
-.skill-image-button .skill-icon {
-    margin-bottom: 0;
-}
-
-.skill-image-button:focus-visible {
-    outline: none;
-}
-
-.skill-image-button:focus-visible::after {
-    outline: 3px solid #2563eb;
-    outline-offset: 4px;
-}
-
-#image-dialog {
-    width: min(90vw, 420px);
-    max-height: 90svh;
-    margin: auto;
-    padding: 24px;
-    border: 1px solid #c5d7e8;
-    border-radius: 16px;
-    background-color: #f0f6fc;
-    color: #222222;
-}
-
-#image-dialog::backdrop {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-#close-image-dialog {
-    display: block;
-    margin-left: auto;
-    padding: 8px 16px;
-    font: inherit;
-    color: inherit;
-    background: transparent;
-    border: 1px solid currentColor;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-#close-image-dialog:focus-visible {
-    outline: 3px solid #2563eb;
-    outline-offset: 3px;
-}
-
-#image-dialog-content {
-    display: grid;
-    place-items: center;
-    padding: 32px 0;
-}
-
-#image-dialog-content .skill-icon {
-    display: block;
-    width: min(240px, 100%);
-    height: 240px;
-    margin: 0;
-    object-fit: contain;
-}
-
-body.dark-theme #image-dialog {
-    background-color: #202c3a;
-    color: #f5f5f5;
-    border-color: #465d75;
-}
-
-body.dark-theme .skill-image-button:focus-visible::after,
-body.dark-theme #close-image-dialog:focus-visible {
-    outline-color: #93c5fd;
-}
-
-.skill-image-button::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-#image-dialog-content .ai-icon {
-    display: grid;
-    place-items: center;
-    font-size: 140px;
-    line-height: 1;
-}
-
-/* hamburgarmeny */
+/* Mobilmenyns knapp är dold tills skärmen är tillräckligt smal. */
 .menu-toggle {
     display: none;
     align-items: center;
@@ -612,7 +158,7 @@ body.dark-theme #close-image-dialog:focus-visible {
     font: inherit;
     color: #ffffff;
     background-color: transparent;
-    border: 0px solid #999999;
+    border: 0;
     border-radius: 6px;
     cursor: pointer;
 }
@@ -626,23 +172,31 @@ body.dark-theme #close-image-dialog:focus-visible {
     outline-offset: 4px;
 }
 
+/* Mobilanpassning: gäller när fönstret är högst 700px brett. */
 @media (max-width: 700px) {
+
+    /* Klassen .js läggs till av JavaScript.
+       Utan JavaScript förblir navigationslänkarna synliga. */
     .js .menu-toggle {
         display: inline-flex;
     }
 
     .js #main-nav {
         display: none;
+
+        /* Navigationen får en egen rad efter knapparna. */
         flex-basis: 100%;
         order: 3;
         flex-direction: column;
         gap: 4px;
     }
 
+    /* JavaScript lägger till .is-open när menyn öppnas. */
     .js #main-nav.is-open {
         display: flex;
     }
 
+    /* Större klickytor gör länkarna lättare att trycka på. */
     .js #main-nav a {
         display: block;
         padding: 12px;
@@ -653,15 +207,102 @@ body.dark-theme #close-image-dialog:focus-visible {
         background-color: #444444;
     }
 }
- 
-/* Så att alla rubriker i sektioner har samma utseende och börjar vid samma höjd */
-main > section:not(.hero) h2 {
-    margin-top: 0;
+
+/* Slut sidhuvud och navigation */
+
+
+/* Start startsida och porträtt  */
+
+.hero {
+    padding: 0;
+
+    /* Bakgrundsbilden tonas ut mot sidans bakgrund längst ner. */
+    background-image:
+        linear-gradient(to bottom, transparent 65%, #f5f5f5 100%),
+        url("images/bakgrund.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-/* Stående surfplattor */
-@media (min-width: 701px) and (max-width: 1024px)
-       and (orientation: portrait) {
+.hero-inner {
+    /* Begränsar innehållets bredd och centrerar behållaren. */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+
+    /* Fyller minst skärmhöjden som finns kvar under menyn. */
+    min-height: calc(100svh - var(--header-height));
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+}
+
+.hero h1 {
+    /* Rubrikstorleken följer fönstrets bredd, inom två gränser. */
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.2;
+    margin: 0 0 20px;
+}
+
+.hero p {
+    /* Begränsar textradens längd för bättre läsbarhet. */
+    max-width: 55ch;
+    margin: 0 0 30px;
+}
+
+.hero-text p {
+    /* Centrerar beskrivningstexten på alla skärmstorlekar. */
+    text-align: center;
+    margin-inline: auto;
+}
+
+.profile-image {
+    display: block;
+    width: 280px;
+    height: 280px;
+    max-width: 100%;
+
+    /* Bilden fyller sin yta och beskärs vid behov. */
+    object-fit: cover;
+
+    border-radius: 50%;
+    margin: 0;
+
+    /* Förhindrar att flex-layouten trycker ihop porträttet. */
+    flex-shrink: 0;
+}
+
+/* Mörkt tema: mörkare bild och uttoning mot den mörka sidan. */
+body.dark-theme .hero {
+    background-image:
+        linear-gradient(to bottom, transparent 65%, #181818 100%),
+        linear-gradient(
+            rgba(24, 24, 24, 0.6),
+            rgba(24, 24, 24, 0.6)
+        ),
+        url("images/bakgrund.png");
+}
+
+/* Från 700px placeras text och porträtt bredvid varandra. */
+@media (min-width: 700px) {
+    .hero-inner {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .hero-text {
+        /* Textdelen tar det utrymme som finns kvar bredvid bilden. */
+        flex: 1;
+    }
+}
+
+/* Stående mobiler och surfplattor upp till 1100px breda.
+   Denna regel ligger efter regeln ovan och anpassar placeringen. */
+@media (max-width: 1100px) and (orientation: portrait) {
     .hero-inner {
         flex-direction: column;
         justify-content: flex-start;
@@ -672,8 +313,570 @@ main > section:not(.hero) h2 {
     }
 
     .hero-text {
+        /* Textdelen ska inte växa och skjuta porträttet långt ner. */
+        flex: initial;
         width: 100%;
         max-width: 560px;
         text-align: center;
     }
 }
+
+/* Slut startsida och porträtt */
+
+
+/* Start länkar som ser ut som knappar */
+
+/* Används för länken "Se mina projekt" på startsidan. */
+.button {
+    /* Gör att länken kan få padding och samtidigt följa textflödet. */
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #222222;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.button:hover {
+    background-color: #444444;
+}
+
+/* Tydlig markering när besökaren navigerar med tangentbord. */
+.button:focus-visible {
+    outline: 3px solid #222222;
+    outline-offset: 4px;
+}
+
+/* I mörkt tema får knappen en ljus bakgrund och mörk text. */
+body.dark-theme .button {
+    background-color: #f5f5f5;
+    color: #222222;
+}
+
+body.dark-theme .button:hover {
+    background-color: #dddddd;
+}
+
+body.dark-theme .button:focus-visible {
+    outline-color: #ffffff;
+}
+
+/* Slut länkar som ser ut som knappar */
+
+
+/* Start Om mig */
+
+main > #om-mig {
+    /* Begränsar textbredden. 70ch motsvarar ungefär
+       bredden av 70 nollor i det aktuella typsnittet. */
+    max-width: 70ch;
+
+    /* Centrerar själva avsnittet på sidan. */
+    margin: 0 auto;
+
+    /* Texten är vänsterställd i det centrerade avsnittet. */
+    text-align: left;
+}
+
+/* Slut Om mig  */
+
+
+/* Start Gemensamt utseende för kort */
+
+/* Klassen används av både projektkort och kompetenskort. */
+.project-card {
+    padding: 24px;
+    background-color: #f0f6fc;
+    border: 1px solid #c5d7e8;
+    border-radius: 8px;
+
+    /* Placerar kortets innehåll uppifrån och ner. */
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card h3 {
+    /* Tar bort rubrikens extra marginal ovanför. */
+    margin-top: 0;
+}
+
+/* Kortens färger när mörkt tema är aktiverat. */
+body.dark-theme .project-card {
+    background-color: #202c3a;
+    border-color: #465d75;
+}
+
+/* Rörelseeffekten används bara när enheten stöder hover
+   och besökaren inte har valt minskad rörelse. */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .project-card {
+        /* Gör förflyttningen och skuggans förändring mjuka. */
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .project-card:hover {
+        /* Lyfter kortet lite när pekaren hålls över det. */
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(96, 165, 250, 0.22);
+    }
+}
+
+/* Slut Gemensamt utseende för kort  */
+
+
+
+/* Start Kompetenser  */
+
+/* En kolumn på smala skärmar. */
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+/* Två lika breda kolumner från 600px. */
+@media (min-width: 600px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Tre lika breda kolumner från 1000px. */
+@media (min-width: 1000px) {
+    .skills-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Grundutseende för kompetensbilderna.
+   Storleken anpassas sedan för korten och bilddialogen. */
+.skill-icon {
+    display: block;
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+/* AI-symbolen är en emoji som centreras i sin yta. */
+.ai-icon {
+    display: grid;
+    place-items: center;
+    font-size: 48px;
+    line-height: 1;
+}
+
+.skill-card {
+    /* Kompetenskorten har mindre padding än projektkorten. */
+    padding: 20px;
+
+    /* Gör kortet till utgångspunkt för knappens klickyta. */
+    position: relative;
+}
+
+.skill-card p {
+    margin: 0;
+}
+
+.skill-card .skill-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 12px;
+}
+
+.skill-card .ai-icon {
+    font-size: 36px;
+}
+
+/* Knappen som öppnar den förstorade kompetensbilden. */
+.skill-image-button {
+    align-self: flex-start;
+    padding: 0;
+    margin: 0 0 20px;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+}
+
+.skill-image-button .skill-icon {
+    /* Knappens marginal sköter avståndet under bilden. */
+    margin-bottom: 0;
+}
+
+/* Ett osynligt lager gör hela kortet klickbart.
+   inset: 0 låter lagret täcka kortet ända ut till kanterna. */
+.skill-image-button::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.skill-image-button:focus-visible {
+    /* Fokusmarkeringen visas runt hela kortet i regeln nedan. */
+    outline: none;
+}
+
+.skill-image-button:focus-visible::after {
+    outline: 3px solid #2563eb;
+    outline-offset: 4px;
+}
+
+/* Ljusare fokusmarkering i mörkt tema. */
+body.dark-theme .skill-image-button:focus-visible::after {
+    outline-color: #93c5fd;
+}
+
+/* Slut Kompetenser  */
+
+
+
+/* Start Bilddialog */
+
+#image-dialog {
+    /* Dialogen får vara högst 420px bred,
+       men lämnar utrymme vid kanterna på smala skärmar. */
+    width: min(90vw, 420px);
+    max-height: 90svh;
+
+    /* Centrerar dialogen på skärmen. */
+    margin: auto;
+    padding: 24px;
+
+    border: 1px solid #c5d7e8;
+    border-radius: 16px;
+    background-color: #f0f6fc;
+    color: #222222;
+}
+
+/* Tonar ner sidan bakom den öppna dialogen. */
+#image-dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Stängknappen placeras till höger i dialogen. */
+#close-image-dialog {
+    display: block;
+    margin-left: auto;
+    padding: 8px 16px;
+    font: inherit;
+    color: inherit;
+    background: transparent;
+
+    /* Kantlinjen använder samma färg som knappens text. */
+    border: 1px solid currentColor;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#close-image-dialog:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 3px;
+}
+
+/* Centrerar bilden och ger luft ovanför och under. */
+#image-dialog-content {
+    display: grid;
+    place-items: center;
+    padding: 32px 0;
+}
+
+#image-dialog-content .skill-icon {
+    display: block;
+
+    /* Bilden får inte bli bredare än utrymmet i dialogen. */
+    width: min(240px, 100%);
+    height: 240px;
+    margin: 0;
+
+    /* Visar hela bilden utan att beskära den. */
+    object-fit: contain;
+}
+
+/* AI-symbolen är en emoji och förstoras med font-size. */
+#image-dialog-content .ai-icon {
+    display: grid;
+    place-items: center;
+    font-size: 140px;
+    line-height: 1;
+}
+
+/* Dialogens färger i mörkt tema. */
+body.dark-theme #image-dialog {
+    background-color: #202c3a;
+    color: #f5f5f5;
+    border-color: #465d75;
+}
+
+body.dark-theme #close-image-dialog:focus-visible {
+    outline-color: #93c5fd;
+}
+
+/* Slut Bilddialog */
+
+
+/* Start Projekt  */
+
+/* På smala skärmar visas projektkorten under varandra. */
+.project-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+/* Från 700px visas två lika breda kolumner. */
+@media (min-width: 700px) {
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.project-status {
+    /* Tar upp ledigt utrymme ovanför statusraden.
+       Det hjälper statusraderna att hamna på samma höjd. */
+    margin-top: auto;
+    margin-bottom: 0;
+}
+
+/* Samlar teknikernas logotyper på en rad.
+   De kan byta rad om utrymmet inte räcker. */
+.project-logos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.project-logos img {
+    display: block;
+    width: 48px;
+    height: 48px;
+
+    /* Visar hela logotypen utan att beskära den. */
+    object-fit: contain;
+}
+
+/* Länken till projektets kod på GitHub. */
+.project-link {
+    display: inline-block;
+
+    /* Länken behåller sin egen bredd i kortets flex-layout. */
+    align-self: flex-start;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 6px 18px;
+
+    color: #174e85;
+    background-color: #e0edff;
+    border-radius: 10px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* Tydlig markering vid navigation med tangentbord. */
+.project-link:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+}
+
+/* Projektlänkens färger i mörkt tema. */
+body.dark-theme .project-link {
+    color: #dbeafe;
+    background-color: #243d59;
+}
+
+/* Rörelse används bara när hover stöds och besökaren
+   inte har valt minskad rörelse. */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .project-link {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .project-link:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 18px rgba(96, 165, 250, 0.4);
+    }
+}
+
+/* Slut Projekt  */
+
+
+/* Start Kontaktformulär  */
+
+.contact-layout {
+    /* Introduktion och formulär placeras under varandra. */
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    align-items: start;
+
+    /* Formuläret fyller tillgänglig bredd, upp till 640px. */
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.contact-intro {
+    text-align: center;
+}
+
+.contact-intro h2 {
+    margin: 0;
+
+    /* Rubriken anpassas efter fönstrets bredd, inom två gränser. */
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    line-height: 1.2;
+}
+
+.contact-intro p {
+    /* Begränsar textens radlängd och centrerar textblocket. */
+    max-width: 45ch;
+    margin: 12px auto 0;
+}
+
+.contact-form {
+    display: grid;
+    gap: 14px;
+    min-width: 0;
+}
+
+/* Varje etikett placeras ovanför sitt inmatningsfält. */
+.form-field {
+    display: grid;
+    gap: 8px;
+}
+
+.form-field label {
+    font-weight: bold;
+}
+
+/* Gemensamt utseende för namn, mejladress och meddelande. */
+.form-field input,
+.form-field textarea {
+    width: 100%;
+    padding: 10px 14px;
+
+    /* Använder samma typsnitt och textstorlek som omgivningen. */
+    font: inherit;
+
+    color: #222222;
+    background-color: #ffffff;
+    border: 1px solid #767676;
+    border-radius: 8px;
+}
+
+.form-field textarea {
+    /* Besökaren kan ändra höjden, men inte bredden. */
+    resize: vertical;
+}
+
+/* Markerar fältet vid exempelvis tangentbordsnavigation. */
+.form-field input:focus-visible,
+.form-field textarea:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 3px;
+}
+
+/* Knappen som skickar meddelandet. */
+.contact-form button {
+    /* Behåller knappens egen bredd och placerar den till vänster. */
+    justify-self: start;
+    padding: 14px 24px;
+    font: inherit;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #1d4ed8;
+    border: 0;
+    border-radius: 8px;
+}
+
+/* JavaScript inaktiverar knappen medan meddelandet skickas. */
+.contact-form button:disabled {
+    background-color: #555555;
+    cursor: not-allowed;
+}
+
+/* Pekare och hover-effekt används bara när knappen är aktiv. */
+.contact-form button:not(:disabled) {
+    cursor: pointer;
+}
+
+.contact-form button:not(:disabled):hover {
+    background-color: #1e40af;
+}
+
+.contact-form button:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 4px;
+}
+
+/* Formulärfältens färger i mörkt tema. */
+body.dark-theme .form-field input,
+body.dark-theme .form-field textarea {
+    color: #f5f5f5;
+    background-color: #282828;
+    border-color: #999999;
+}
+
+/* Ljusare fokusmarkeringar mot den mörka bakgrunden. */
+body.dark-theme .form-field input:focus-visible,
+body.dark-theme .form-field textarea:focus-visible {
+    outline-color: #93c5fd;
+}
+
+body.dark-theme .contact-form button:focus-visible {
+    outline-color: #93c5fd;
+}
+
+/* Slut Kontaktformulär */
+
+
+/* Start Sidfot */
+
+.site-footer {
+    background-color: #222222;
+    color: #ffffff;
+    padding: 32px 20px;
+}
+
+.footer-inner {
+    /* Begränsar innehållets bredd och centrerar behållaren. */
+    max-width: 1200px;
+    margin: 0 auto;
+
+    /* Fördelar copyrighttexten och navigationen över raden. */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /* Innehållet får byta rad när utrymmet inte räcker. */
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-inner p {
+    /* Tar bort styckets standardmarginaler. */
+    margin: 0;
+}
+
+/* Sidfotens navigation och länkar använder de gemensamma
+   nav-reglerna i delen "Sidhuvud och navigation". */
+
+/* Slut Sidfot */
+
+
+
+/* Start Mjuk scrollning  */
+
+/* Scrollar mjukt vid länkar till avsnitt på sidan.
+   Aktiveras bara om besökaren inte har valt minskad rörelse
+   i enhetens inställningar. */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Slut Mjuk scrollning  */
