@@ -5,6 +5,7 @@
 <!-- Sidans språk är svenska, vilket bland annat hjälper skärmläsare. -->
 
 <!-- Start Dokumentets inställningar -->
+
 <head>
     <!-- Gör att bland annat å, ä och ö visas korrekt. -->
     <meta charset="UTF-8">
@@ -27,299 +28,383 @@
 <!-- Här börjar sidans innehåll.
      id="toppen" är målet för länkarna tillbaka till toppen.
      class="dark-theme" gör att sidan börjar i mörkt tema. -->
-<body id="toppen" class="dark-theme">
-<!-- Start Sidhuvud och navigation -->
-<header>
-    <!-- Logotypen länkar tillbaka till elementet med id="toppen". -->
-    <a class="site-logo" href="#toppen">Min portfolio</a>
 
-    <!-- Knapp för mobilmenyn.
+<body id="toppen" class="dark-theme">
+    <!-- Start Sidhuvud och navigation -->
+    <header>
+        <!-- Logotypen länkar tillbaka till elementet med id="toppen". -->
+        <a class="site-logo" href="#toppen">Min portfolio</a>
+
+        <!-- Knapp för mobilmenyn.
          aria-controls anger vilken navigation knappen styr.
          aria-expanded berättar om menyn är öppen eller stängd.
          JavaScript uppdaterar värdet när besökaren använder knappen. -->
-    <button
-        id="menu-toggle"
-        class="menu-toggle"
-        type="button"
-        aria-controls="main-nav"
-        aria-expanded="false"
-    >
-        <!-- Symbolen är dekorativ. Skärmläsare läser texten "Meny". -->
-        <span aria-hidden="true">☰</span>
-        Meny
-    </button>
+        <button id="menu-toggle" class="menu-toggle" type="button" aria-controls="main-nav" aria-expanded="false">
+            <!-- Symbolen är dekorativ. Skärmläsare läser texten "Meny". -->
+            <span aria-hidden="true">☰</span>
+            Meny
+        </button>
 
-    <!-- aria-label ger navigationen ett namn för skärmläsare. -->
-    <nav id="main-nav" aria-label="Huvudnavigation">
-        <!-- Varje länk går till avsnittet med motsvarande id. -->
-        <a href="#om-mig">Om mig</a>
-        <a href="#kompetenser">Kompetenser</a>
-        <a href="#projekt">Projekt</a>
-        <a href="#kontakt">Kontakt</a>
-    </nav>
+        <!-- aria-label ger navigationen ett namn för skärmläsare. -->
+        <nav id="main-nav" aria-label="Huvudnavigation">
+            <!-- Varje länk går till avsnittet med motsvarande id. -->
+            <a href="#om-mig">Om mig</a>
+            <a href="#kompetenser">Kompetenser</a>
+            <a href="#projekt">Projekt</a>
+            <a href="#kontakt">Kontakt</a>
+        </nav>
 
-    <!-- JavaScript växlar temat och uppdaterar knappens text.
+        <!-- JavaScript växlar temat och uppdaterar knappens text.
          Texten visar vilket tema besökaren kan byta till. -->
-    <button id="theme-toggle" type="button">Ljust tema</button>
-</header>
-<!-- Slut Sidhuvud och navigation -->
+        <button id="theme-toggle" type="button">Ljust tema</button>
+    </header>
+    <!-- Slut Sidhuvud och navigation -->
 
+
+    <!-- Sidans huvudinnehåll: presentation, kompetenser, projekt och kontakt. -->
     <main>
-<!-- Start Startsida och porträtt -->
-<section class="hero">
-    <!-- Samlar text och porträtt.
+        <!-- Start Startsida och porträtt -->
+        <section class="hero">
+            <!-- Samlar text och porträtt.
          CSS anpassar deras placering efter skärmens storlek. -->
-    <div class="hero-inner">
-        <div class="hero-text">
-            <!-- Sidans huvudrubrik. Övriga avsnitt använder h2. -->
-            <h1>Hej, jag heter Albert Filipovic!</h1>
+            <div class="hero-inner">
+                <div class="hero-text">
+                    <!-- Sidans huvudrubrik. Övriga avsnitt använder h2. -->
+                    <h1>Hej, jag heter Albert Filipovic!</h1>
 
-            <p>
-                Jag studerar systemutveckling och bygger
-                min första portfolio.
-            </p>
+                    <p>
+                        Jag studerar systemutveckling och bygger
+                        min första portfolio.
+                    </p>
 
-            <!-- En länk som ser ut som en knapp.
+                    <!-- En länk som ser ut som en knapp.
                  Leder till avsnittet med id="projekt". -->
-            <a class="button" href="#projekt">Se mina projekt</a>
-        </div>
+                    <a class="button" href="#projekt">Se mina projekt</a>
+                </div>
 
-        <!-- alt beskriver bilden för bland annat skärmläsare.
+                <!-- alt beskriver bilden för bland annat skärmläsare.
              width och height hjälper webbläsaren att reservera
              utrymme innan bilden har laddats. -->
-        <img
-            class="profile-image"
-            src="images/profil.png"
-            alt="Porträtt av Albert Filipovic"
-            width="280"
-            height="280"
-        >
-    </div>
-</section>
-<!-- Slut Startsida och porträtt -->
-
-<section id="om-mig">
-    <h2>Om mig</h2>
-
-    <p>
-        Jag studerar systemutveckling med inriktning .NET på
-        TUC Yrkeshögskola. Där utvecklar jag mina kunskaper
-        inom C#, programmering och hur man bygger fungerande
-        mjukvarulösningar.
-    </p>
-
-    <p>
-        Sedan tidigare har jag erfarenhet av tillverkning,
-        logistik, Lean och ledarskap. Problemlösning, struktur
-        och ständiga förbättringar har varit en viktig del av
-        mitt arbete — erfarenheter som jag nu tar med mig
-        in i systemutvecklingen.
-    </p>
-
-    <p>
-        Jag vill kombinera min praktiska bakgrund med mitt
-        intresse för teknik och skapa lösningar som förenklar
-        vardagen för användare. Mitt mål är att fortsätta
-        utvecklas som programmerare och bidra till genomtänkta
-        och tillförlitliga system.
-    </p>
-</section>
-
-<section id="kompetenser">
-    <h2>Kompetenser</h2>
-
-    <div class="skills-grid">
-        <article class="project-card skill-card">
-            <button class="skill-image-button" type="button" aria-label="Förstora C#">
-              <img class="skill-icon" src="images/csharp-original.svg" alt="" width="64" height="64">
-            </button>
-            <h3>C#</h3>
-            <p>
-                Ett programmeringsspråk för att bygga
-                applikationer med bland annat klasser och objekt.
-            </p>
-        </article>
-
-        <article class="project-card skill-card">
-            <button class="skill-image-button" type="button" aria-label="Förstora .NET">
-              <img class="skill-icon" src="images/dot-net-original.svg" alt="" width="64" height="64">
-            </button>
-            <h3>.NET</h3>
-            <p>
-                En utvecklingsplattform för att bygga och
-                köra exempelvis webbappar och API:er.
-            </p>
-        </article>
-        <article class="project-card skill-card">
-            <button class="skill-image-button" type="button" aria-label="Förstora HTML">
-              <img class="skill-icon" src="images/html5-original.svg" alt="" width="64" height="64">
-            </button>
-            <h3>HTML</h3>
-            <p>
-                Ger webbsidan struktur med rubriker,
-                länkar, bilder och formulär.
-            </p>
-        </article>
-
-        <article class="project-card skill-card">
-            <button class="skill-image-button" type="button" aria-label="Förstora CSS">
-              <img class="skill-icon" src="images/css3-original.svg" alt="" width="64" height="64">
-            </button>
-            <h3>CSS</h3>
-            <p>
-                Styr webbsidans utseende och anpassar
-                layouten till olika skärmstorlekar.
-            </p>
-        </article>
-
-        <article class="project-card skill-card">
-            <button class="skill-image-button" type="button" aria-label="Förstora JavaScript">
-                <img class="skill-icon" src="images/javascript-original.svg" alt="" width="64" height="64">
-            </button>
-            <h3>JavaScript</h3> 
-            <p>
-                Skapar interaktivitet genom att hantera
-                händelser och uppdatera sidans innehåll.
-            </p>
-        </article>
-
-        <article class="project-card skill-card">
-            <button class="skill-image-button" type="button" aria-label="Förstora AI">
-                <span class="skill-icon ai-icon" aria-hidden="true">🤖</span>
-            </button>
-            <h3>AI</h3>
-            <p>
-                Kan användas som stöd för idéer,
-                kodförklaringar och felsökning.
-                Resultaten behöver granskas och testas.
-            </p>
-        </article>
-    </div>
-</section>
-
-<section id="projekt">
-    <h2>Projekt</h2>
-
-    <div class="project-grid">
-        <article class="project-card">
-            <div class="project-logos">
-                <img src="images/csharp-original.svg"
-                     alt="" width="48" height="48">
-
-                <img src="images/dot-net-original.svg"
-                     alt="" width="48" height="48">
+                <img class="profile-image" src="images/profil.png" alt="Porträtt av Albert Filipovic" width="280"
+                    height="280">
             </div>
+        </section>
+        <!-- Slut Startsida och porträtt -->
 
-            <h3>C# och .NET</h3>
+        <!-- Start Om mig -->
+
+        <!-- id används av menylänken för att hitta avsnittet. -->
+        <section id="om-mig">
+            <h2>Om mig</h2>
+
+            <!-- Min nuvarande utbildning och det jag lär mig. -->
             <p>
-                Jag har byggt ett bibliotekshanteringssystem i C#.
-            </p>  
-            <p class="project-status">Status: Klar.</p>      
-            <a class="project-link"
-                 href="https://github.com/albertfilipovic17/Bibliotekshanteringssystem">
-                    Visa koden på GitHub →
-            </a>
-        </article>
-
-        <article class="project-card">
-            <div class="project-logos">
-                <img src="images/html5-original.svg"
-                     alt="" width="48" height="48">
-
-                <img src="images/css3-original.svg"
-                     alt="" width="48" height="48">
-
-                <img src="images/javascript-original.svg"
-                     alt="" width="48" height="48">
-            </div>
-
-            <h3>HTML, CSS och JavaScript</h3>
-            <p>
-                Jag bygger en personlig webbplats med
-                HTML, CSS och JavaScript.
+                Jag studerar systemutveckling med inriktning .NET på
+                TUC Yrkeshögskola. Där utvecklar jag mina kunskaper
+                inom C#, programmering och hur man bygger fungerande
+                mjukvarulösningar.
             </p>
-            <p class="project-status">Status: under utveckling.</p>
-                <a class="project-link"
-                    href="https://github.com/albertfilipovic17/Portfolio">
+
+            <!-- Tidigare erfarenheter som jag tar med mig till systemutveckling. -->
+            <p>
+                Sedan tidigare har jag erfarenhet av tillverkning,
+                logistik, Lean och ledarskap. Problemlösning, struktur
+                och ständiga förbättringar har varit en viktig del av
+                mitt arbete — erfarenheter som jag nu tar med mig
+                in i systemutvecklingen.
+            </p>
+
+            <!-- Vad jag vill arbeta med och utvecklas inom. -->
+            <p>
+                Jag vill kombinera min praktiska bakgrund med mitt
+                intresse för teknik och skapa lösningar som förenklar
+                vardagen för användare. Mitt mål är att fortsätta
+                utvecklas som programmerare och bidra till genomtänkta
+                och tillförlitliga system.
+            </p>
+        </section>
+
+        <!-- Slut Om mig -->
+
+        <!-- Start Kompetenser -->
+        <section id="kompetenser">
+            <h2>Kompetenser</h2>
+
+            <!-- CSS ordnar korten i en, två eller tre kolumner
+         beroende på skärmens bredd. -->
+            <div class="skills-grid">
+
+                <!-- Varje article innehåller en kompetens.
+             project-card ger kortens gemensamma utseende.
+             skill-card ger anpassningar för kompetenskorten. -->
+
+                <!-- Start C# -->
+                <article class="project-card skill-card">
+                    <!-- JavaScript öppnar bilddialogen när knappen används.
+                 CSS gör knappens klickyta lika stor som hela kortet.
+                 aria-label ger knappen ett namn för skärmläsare. -->
+                    <button class="skill-image-button" type="button" aria-label="Förstora C#">
+                        <!-- Tom alt-text undviker att bildens namn läses upp
+                     utöver knappens beskrivning. -->
+                        <img class="skill-icon" src="images/csharp-original.svg" alt="" width="64" height="64">
+                    </button>
+
+                    <h3>C#</h3>
+                    <p>
+                        Ett programmeringsspråk för att bygga
+                        applikationer med bland annat klasser och objekt.
+                    </p>
+                </article>
+                <!-- Slut C# -->
+
+                <!-- Start .NET -->
+                <article class="project-card skill-card">
+                    <button class="skill-image-button" type="button" aria-label="Förstora .NET">
+                        <img class="skill-icon" src="images/dot-net-original.svg" alt="" width="64" height="64">
+                    </button>
+
+                    <h3>.NET</h3>
+                    <p>
+                        En utvecklingsplattform för att bygga och
+                        köra exempelvis webbappar och API:er.
+                    </p>
+                </article>
+                <!-- Slut .NET -->
+
+                <!-- Start HTML -->
+                <article class="project-card skill-card">
+                    <button class="skill-image-button" type="button" aria-label="Förstora HTML">
+                        <img class="skill-icon" src="images/html5-original.svg" alt="" width="64" height="64">
+                    </button>
+
+                    <h3>HTML</h3>
+                    <p>
+                        Ger webbsidan struktur med rubriker,
+                        länkar, bilder och formulär.
+                    </p>
+                </article>
+                <!-- Slut HTML -->
+
+                <!-- Start CSS -->
+                <article class="project-card skill-card">
+                    <button class="skill-image-button" type="button" aria-label="Förstora CSS">
+                        <img class="skill-icon" src="images/css3-original.svg" alt="" width="64" height="64">
+                    </button>
+
+                    <h3>CSS</h3>
+                    <p>
+                        Styr webbsidans utseende och anpassar
+                        layouten till olika skärmstorlekar.
+                    </p>
+                </article>
+                <!-- Slut CSS -->
+
+                <!-- Start JavaScript -->
+                <article class="project-card skill-card">
+                    <button class="skill-image-button" type="button" aria-label="Förstora JavaScript">
+                        <img class="skill-icon" src="images/javascript-original.svg" alt="" width="64" height="64">
+                    </button>
+
+                    <h3>JavaScript</h3>
+                    <p>
+                        Skapar interaktivitet genom att hantera
+                        händelser och uppdatera sidans innehåll.
+                    </p>
+                </article>
+                <!-- Slut JavaScript -->
+
+                <!-- Start AI -->
+                <article class="project-card skill-card">
+                    <button class="skill-image-button" type="button" aria-label="Förstora AI">
+                        <!-- Här används en emoji i stället för en bildfil.
+                     aria-hidden döljer emojin för skärmläsare,
+                     eftersom knappen redan har ett namn. -->
+                        <span class="skill-icon ai-icon" aria-hidden="true">🤖</span>
+                    </button>
+
+                    <h3>AI</h3>
+                    <p>
+                        Kan användas som stöd för idéer,
+                        kodförklaringar och felsökning.
+                        Resultaten behöver granskas och testas.
+                    </p>
+                </article>
+                <!-- Slut AI -->
+
+            </div>
+        </section>
+        <!-- Slut Kompetenser -->
+
+        <!-- Start Projekt -->
+        <section id="projekt">
+            <h2>Projekt</h2>
+
+            <!-- CSS visar en kolumn på smala skärmar
+         och två kolumner från 700px. -->
+            <div class="project-grid">
+
+                <!-- Start Bibliotekshanteringssystem -->
+                <article class="project-card">
+                    <!-- Logotyperna har tom alt-text eftersom
+                 teknikernas namn finns i rubriken nedanför. -->
+                    <div class="project-logos">
+                        <img src="images/csharp-original.svg" alt="" width="48" height="48">
+                        <img src="images/dot-net-original.svg" alt="" width="48" height="48">
+                    </div>
+
+                    <h3>C# och .NET</h3>
+                    <p>
+                        Jag har byggt ett bibliotekshanteringssystem i C#.
+                    </p>
+
+                    <!-- Klassen används av CSS för att placera statusraden. -->
+                    <p class="project-status">Status: Klar.</p>
+
+                    <!-- Länkar till projektets källkod på GitHub. -->
+                    <a class="project-link" href="https://github.com/albertfilipovic17/Bibliotekshanteringssystem">
                         Visa koden på GitHub →
-                </a>
-            
-        </article>
-    </div>
-</section>
+                    </a>
+                </article>
+                <!-- Slut Bibliotekshanteringssystem -->
+
+                <!-- Start Portfolio -->
+                <article class="project-card">
+                    <div class="project-logos">
+                        <img src="images/html5-original.svg" alt="" width="48" height="48">
+                        <img src="images/css3-original.svg" alt="" width="48" height="48">
+                        <img src="images/javascript-original.svg" alt="" width="48" height="48">
+                    </div>
+
+                    <h3>HTML, CSS och JavaScript</h3>
+                    <p>
+                        Jag bygger en personlig webbplats med
+                        HTML, CSS och JavaScript.
+                    </p>
+
+                    <p class="project-status">Status: under utveckling.</p>
+
+                    <a class="project-link" href="https://github.com/albertfilipovic17/Portfolio">
+                        Visa koden på GitHub →
+                    </a>
+                </article>
+                <!-- Slut Portfolio -->
+
+            </div>
+        </section>
+        <!-- Slut Projekt -->
 
 
+        <!-- Start Kontakt -->
         <section id="kontakt">
-    <div class="contact-layout">
-        <div class="contact-intro">
-            <h2>Har du en idé?</h2>
-            <p>
-                Vill du prata om ett projekt, webbutveckling
-                eller ett framtida samarbete?
-                Skriv gärna ett meddelande.
-            </p>
-        </div>
-              <form class="contact-form" action="https://formspree.io/f/xkjrvbpq" method="POST">
-             <div class="form-field">
-                 <label for="name">Namn (obligatoriskt)</label>
-                 <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        autocomplete="name"
-                        required
-                    >
-             </div>
+            <div class="contact-layout">
 
-              <div class="form-field">
-                  <label for="email">Mejladress (obligatoriskt)</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    autocomplete="email"
-                    required
-                  >
-             </div>
+                <!-- Start Kontaktintroduktion -->
+                <div class="contact-intro">
+                    <h2>Har du en idé?</h2>
+                    <p>
+                        Vill du prata om ett projekt, webbutveckling
+                        eller ett framtida samarbete?
+                        Skriv gärna ett meddelande.
+                    </p>
+                </div>
+                <!-- Slut Kontaktintroduktion -->
 
-        <div class="form-field">
-            <label for="message">Meddelande (obligatoriskt)</label>
-            <textarea
-                id="message"
-                name="message"
-                rows="4"
-                required
-            ></textarea>
-        </div>
-        <button type="submit">Skicka meddelande</button>
-        <p id="form-status" role="status"></p>
-    </form>  
-    </div>
-</section>
+                <!-- Start Kontaktformulär -->
+
+                <!-- action anger vart formuläret skickas.
+             POST skickar uppgifterna i begärans innehåll.
+             JavaScript hanterar skickandet utan att lämna sidan. -->
+                <form class="contact-form" action="https://formspree.io/f/xkjrvbpq" method="POST">
+                    <!-- for på etiketten matchar fältets id.
+                 name anger fältets namn i uppgifterna som skickas.
+                 autocomplete hjälper webbläsaren att fylla i fältet.
+                 required gör fältet obligatoriskt. -->
+                    <div class="form-field">
+                        <label for="name">Namn (obligatoriskt)</label>
+                        <input type="text" id="name" name="name" autocomplete="name" required>
+                    </div>
+
+                    <!-- type="email" låter webbläsaren kontrollera
+                 mejladressens format, men inte att adressen finns. -->
+                    <div class="form-field">
+                        <label for="email">Mejladress (obligatoriskt)</label>
+                        <input type="email" id="email" name="email" autocomplete="email" required>
+                    </div>
+
+                    <!-- textarea är ett textfält för flera rader.
+                 rows anger fältets ursprungliga höjd i textrader. -->
+                    <div class="form-field">
+                        <label for="message">Meddelande (obligatoriskt)</label>
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                    </div>
+
+                    <!-- submit startar formulärets skickande. -->
+                    <button type="submit">Skicka meddelande</button>
+
+                    <!-- JavaScript visar återkoppling här.
+                 role="status" gör att skärmläsare kan meddela
+                 uppdateringen utan att flytta besökarens fokus. -->
+                    <p id="form-status" role="status"></p>
+                </form>
+                <!-- Slut Kontaktformulär -->
+
+            </div>
+        </section>
+        <!-- Slut Kontakt -->
 
     </main>
 
+    <!-- Start Sidfot -->
     <footer class="site-footer">
-    <div class="footer-inner">
-        <p>© Albert Filipovic 2026</p>
+        <!-- Samlar sidfotens innehåll.
+         CSS anpassar placeringen efter utrymmet på skärmen. -->
+        <div class="footer-inner">
+            <p>© Albert Filipovic 2026</p>
 
-        <nav aria-label="Sidfotsnavigation">
-            <a href="mailto:Albert.Filipovic@outlook.com"> E-mail </a> 
-            <a href="tel:+46735233605"> Telefon </a>
-            <a href="https://github.com/albertfilipovic17">GitHub </a>
-            <a href="https://www.linkedin.com/in/albert-filipovic-b261a9106/">LinkedIn </a>
-            <a href="#toppen">Till Toppen ↑</a>
-        </nav>
-    </div>
-</footer>
+            <!-- Namnet skiljer denna navigation från huvudnavigationen
+             när besökaren använder skärmläsare. -->
+            <nav aria-label="Sidfotsnavigation">
 
-<dialog id="image-dialog" aria-label="Förstorad kompetensbild">
-    <button id="close-image-dialog" type="button" autofocus>
-        Stäng
-    </button>
+                <!-- Öppnar besökarens e-postprogram med adressen ifylld. -->
+                <a href="mailto:Albert.Filipovic@outlook.com">E-mail</a>
 
-    <div id="image-dialog-content"></div>
-</dialog>
+                <!-- Lämnar telefonnumret till en app som kan ringa.
+                 På en mobil öppnas normalt telefonens uppringning. -->
+                <a href="tel:+46735233605">Telefon</a>
+
+                <!-- Länkar till mina externa profiler. -->
+                <a href="https://github.com/albertfilipovic17">GitHub</a>
+                <a href="https://www.linkedin.com/in/albert-filipovic-b261a9106/">
+                    LinkedIn
+                </a>
+
+                <!-- Går tillbaka till elementet med id="toppen". -->
+                <a href="#toppen">Till Toppen ↑</a>
+            </nav>
+        </div>
+    </footer>
+    <!-- Slut Sidfot -->
+
+    <!-- Start Bilddialog -->
+
+    <!-- Dialogen är dold tills JavaScript öppnar den med showModal().
+     aria-label ger dialogen ett namn för skärmläsare. -->
+    <dialog id="image-dialog" aria-label="Förstorad kompetensbild">
+
+        <!-- autofocus placerar fokus på stängknappen när dialogen öppnas.
+         JavaScript stänger dialogen när knappen används.
+         Dialogen kan även stängas med Escape. -->
+        <button id="close-image-dialog" type="button" autofocus>
+            Stäng
+        </button>
+
+        <!-- JavaScript lägger en kopia av den valda kompetensbilden
+         eller AI-symbolen här. CSS styr storlek och centrering. -->
+        <div id="image-dialog-content"></div>
+
+    </dialog>
+    <!-- Slut Bilddialog -->
 
 </body>
+
 </html>
