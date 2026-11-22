@@ -18,8 +18,12 @@ body {
 main > section:not(.hero) {
     max-width: 1200px;
     margin: 0 auto;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 32px 20px 48px;
+    min-height: calc(100svh - var(--header-height));
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    scroll-margin-top: var(--header-height);
 }
 
 section {
@@ -98,7 +102,7 @@ nav a:focus-visible {
     max-width: 1200px;
     margin: 0 auto;
     padding: 80px 20px;
-    min-height: calc(100svh - 100px);
+    min-height: calc(100svh - var(--header-height));
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -175,7 +179,7 @@ body.dark-theme .project-card {
 }
 
 #theme-toggle {
-    padding: 5px 12px;
+    padding: 5px 12px; 
     font: inherit;
     background-color: #ffffff;
     color: #222222;
@@ -359,10 +363,6 @@ body.dark-theme .form-field textarea:focus-visible {
     outline-color: #93c5fd;
 }
 
-#kontakt {
-    padding-top: 24px;
-    padding-bottom: 32px;
-}
 
 /* Kompetenser */
 .skills-grid {
@@ -473,23 +473,6 @@ main > #om-mig {
 }
 
 /* Andra sektioner */
-main > section:not(.hero) {
-    min-height: calc(100svh - var(--header-height));
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    scroll-margin-top: var(--header-height);
-}
-
-main > #projekt,
-main > #kompetenser {
-    padding-top: 24px;
-    padding-bottom: 96px;
-}
-main > #kompetenser {
-    padding-top: 0px;
-    padding-bottom: 112px;
-}
 
 .skill-card {
     padding: 20px;
@@ -625,11 +608,11 @@ body.dark-theme #close-image-dialog:focus-visible {
     display: none;
     align-items: center;
     gap: 8px;
-    padding: 10px 14px;
+    padding: 6px 14px;
     font: inherit;
     color: #ffffff;
     background-color: transparent;
-    border: 1px solid #999999;
+    border: 0px solid #999999;
     border-radius: 6px;
     cursor: pointer;
 }
@@ -669,4 +652,9 @@ body.dark-theme #close-image-dialog:focus-visible {
     .js #main-nav a:hover {
         background-color: #444444;
     }
+}
+ 
+/* Så att alla rubriker i sektioner har samma utseende och börjar vid samma höjd */
+main > section:not(.hero) h2 {
+    margin-top: 0;
 }

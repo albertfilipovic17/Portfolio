@@ -82,9 +82,32 @@ const mobileView = window.matchMedia("(max-width: 700px)");
 
 document.documentElement.classList.add("js");
 
+//Dynamsik höjd på header för att kunna använda scroll-margin-top på sektioner
+const siteHeader = document.querySelector("header");
+
+function updateHeaderHeight() {
+    if (mainNav.classList.contains("is-open")) {
+        return;
+    }
+
+    const height = siteHeader.getBoundingClientRect().height;
+
+    document.documentElement.style.setProperty(
+        "--header-height",
+        `${height}px`
+    );
+}
+
+const headerObserver = new ResizeObserver(updateHeaderHeight);
+
+headerObserver.observe(siteHeader);
+updateHeaderHeight();
+
+// Hantera menyöppning och stängning
 function closeMenu() {
     mainNav.classList.remove("is-open");
     menuToggle.setAttribute("aria-expanded", "false");
+    updateHeaderHeight();
 }
 
 menuToggle.addEventListener("click", function () {
