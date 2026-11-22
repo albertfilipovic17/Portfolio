@@ -74,3 +74,34 @@ skillImageButtons.forEach(function (button) {
 closeImageDialog.addEventListener("click", function () {
     imageDialog.close();
 });
+
+//
+const menuToggle = document.querySelector("#menu-toggle");
+const mainNav = document.querySelector("#main-nav");
+const mobileView = window.matchMedia("(max-width: 700px)");
+
+document.documentElement.classList.add("js");
+
+function closeMenu() {
+    mainNav.classList.remove("is-open");
+    menuToggle.setAttribute("aria-expanded", "false");
+}
+
+menuToggle.addEventListener("click", function () {
+    const isOpen = mainNav.classList.toggle("is-open");
+
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+});
+
+mainNav.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", closeMenu);
+});
+
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && mainNav.classList.contains("is-open")) {
+        closeMenu();
+        menuToggle.focus();
+    }
+});
+
+mobileView.addEventListener("change", closeMenu);

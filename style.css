@@ -619,3 +619,54 @@ body.dark-theme #close-image-dialog:focus-visible {
     font-size: 140px;
     line-height: 1;
 }
+
+/* hamburgarmeny */
+.menu-toggle {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    font: inherit;
+    color: #ffffff;
+    background-color: transparent;
+    border: 1px solid #999999;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.menu-toggle:hover {
+    background-color: #444444;
+}
+
+.menu-toggle:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 4px;
+}
+
+@media (max-width: 700px) {
+    .js .menu-toggle {
+        display: inline-flex;
+    }
+
+    .js #main-nav {
+        display: none;
+        flex-basis: 100%;
+        order: 3;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .js #main-nav.is-open {
+        display: flex;
+    }
+
+    .js #main-nav a {
+        display: block;
+        padding: 12px;
+        border-radius: 6px;
+    }
+
+    .js #main-nav a:hover {
+        background-color: #444444;
+    }
+}
