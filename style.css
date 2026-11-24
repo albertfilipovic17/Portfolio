@@ -589,7 +589,7 @@ body.dark-theme .skill-image-button:focus-visible::after {
     /* Bilden får inte bli bredare än utrymmet i dialogen. */
     width: min(240px, 100%);
     height: 240px;
-    margin: 0;
+    margin: 0;   
 
     /* Visar hela bilden utan att beskära den. */
     object-fit: contain;
