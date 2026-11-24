@@ -1,8 +1,5 @@
-/* Start Grundinställningar */
-
 :root {
-    /* Reservvärde. JavaScript uppdaterar till menyns verkliga höjd. */
-    --header-height: 100px;
+    --header-height: 100px; /*uppdaterar till menyns verkliga höjd med JavaScript*/
 }
 
 * {
@@ -297,6 +294,7 @@ body.dark-theme .hero {
     .hero-text {
         /* Textdelen tar det utrymme som finns kvar bredvid bilden. */
         flex: 1;
+        text-align: center; /* Centrerar rubriken, beskrivningen och projektknappen. */
     }
 }
 
