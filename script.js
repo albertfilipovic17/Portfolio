@@ -1,226 +1,134 @@
-// Start Temaväxling
-// Hämtar knappen med id="theme-toggle" från HTML-dokumentet.
-const themeButton = document.querySelector("#theme-toggle");
+//Temaväxling
+const themeButton = document.querySelector("#theme-toggle");        //hittar och hämtar temaknappen, skapar en 
 
-// Funktionen körs när besökaren klickar på temaknappen.
 function toggleTheme() {
-    // Lägger till dark-theme om klassen saknas, annars tas den bort.
-    // toggle returnerar true om klassen finns efter ändringen.
-    const isDark = document.body.classList.toggle("dark-theme");
+    const isDark = document.body.classList.toggle("dark-theme");    // växlar mellan ljust och mörkt tema
 
-    // Knapptexten visar vilket tema besökaren kan byta till.
     if (isDark) {
         themeButton.textContent = "Ljust tema";
     } else {
         themeButton.textContent = "Mörkt tema";
     }
 }
-
-// Kopplar ett klick på knappen till funktionen toggleTheme.
-// Utan parenteser här körs funktionen först när klicket sker.
-themeButton.addEventListener("click", toggleTheme);
-// Slut Temaväxling
+themeButton.addEventListener("click", toggleTheme);         //kopplar temaknappen till funktione så att den körs när besökaren klickar på knappen
 
 
-// Start Kontaktformulär
-// Hämtar formuläret och platsen där återkoppling ska visas.
-const contactForm = document.querySelector(".contact-form");
-const formStatus = document.querySelector("#form-status");
+// Kontaktformulär
+const contactForm = document.querySelector(".contact-form");                // hittar kontaktformuläret
+const formStatus = document.querySelector("#form-status");                  // hittar platsen där återkoppling ska visas
+const submitButton = contactForm.querySelector('button[type="submit"]');    // hittar formulärets skicka-knapp
 
-// Söker efter skicka-knappen inuti formuläret.
-const submitButton = contactForm.querySelector('button[type="submit"]');
+async function sendMessage(event) {                         //Körs när besökaren skickar formuläret
+    event.preventDefault();                                 //hindrar att formuläret skickas på vanligt sätt, vilket skulle lämna sidan och ladda om den.
 
-// async gör att funktionen kan använda await för att invänta
-// svaret från servern utan att låsa resten av sidan.
-async function sendMessage(event) {
-    // Stoppar formulärets vanliga skickande, som skulle lämna sidan.
-    event.preventDefault();
-
-    // Förhindrar fler klick medan meddelandet skickas.
-    submitButton.disabled = true;
+    submitButton.disabled = true;                           // inaktiverar knappen medan meddelandet skickas
     submitButton.textContent = "Skickar...";
 
-    // Tar bort eventuell återkoppling från ett tidigare försök.
-    formStatus.textContent = "";
+    formStatus.textContent = "";                            // tömmer texten i återkopplingsområdet
 
-    // try innehåller det vi försöker utföra.
-    // Om ett fel kastas går körningen vidare till catch.
-    try {
-        // Skickar uppgifterna till adressen i formulärets action.
-        // FormData samlar fältens namn och deras ifyllda värden.
-        const response = await fetch(contactForm.action, {
-            method: "POST",
-            body: new FormData(contactForm),
-            headers: {
-                // Ber servern att svara i JSON-format.
-                Accept: "application/json"
+    try {                                                   // försöker skicka meddelandet
+        const response = await fetch(contactForm.action, {  // skickar formulärets data till servern
+            method: "POST", 
+            body: new FormData(contactForm),                // skapar ett FormData-objekt med formulärets fält och värden
+            headers: { 
+                Accept: "application/json"                  // ber om att servern ska svara med JSON
             }
         });
 
-        // response.ok är true vid en HTTP-status mellan 200 och 299.
         if (response.ok) {
-            // Återställer fälten och visar att meddelandet skickats.
-            contactForm.reset();
+            contactForm.reset();                        // tömmer formulärets fält om meddelandet skickades och visar att det lyckades
             formStatus.textContent = "Tack! Ditt meddelande har skickats.";
         } else {
-            // Servern svarade, men skickandet lyckades inte.
-            // Fältens innehåll behålls så att besökaren kan försöka igen.
             formStatus.textContent =
                 "Meddelandet kunde inte skickas. Försök igen.";
         }
     } catch (error) {
-        // Hanterar exempelvis ett nätverksfel som gör att fetch misslyckas.
         formStatus.textContent =
             "Det gick inte att ansluta. Kontrollera din internetanslutning och försök igen.";
     } finally {
-        // Återaktiverar knappen när försöket är avslutat,
-        // oavsett om meddelandet skickades eller ett fel uppstod.
-        submitButton.disabled = false;
+        submitButton.disabled = false;                  //återaktiverar nappen 
         submitButton.textContent = "Skicka meddelande";
     }
 }
-
-// Lyssnar på formulärets submit-händelse.
-// Det fungerar både med skicka-knappen och när formuläret
-// skickas med tangentbordet. Webbläsaren kontrollerar först
-// bland annat required-fälten och mejladressens format.
-contactForm.addEventListener("submit", sendMessage);
-// Slut Kontaktformulär
+contactForm.addEventListener("submit", sendMessage);    // kopplar formuläret till funktionen som skickar meddelandet
 
 
-// Start Bilddialog
-// Hämtar dialogen, dess innehållsyta och stängknappen.
-const imageDialog = document.querySelector("#image-dialog");
-const dialogContent = document.querySelector("#image-dialog-content");
-const closeImageDialog = document.querySelector("#close-image-dialog");
 
-// Hämtar alla knappar som öppnar en kompetensbild.
-const skillImageButtons = document.querySelectorAll(".skill-image-button");
+// Bilddialog 
+const imageDialog = document.querySelector("#image-dialog");                 // hämtar dialogen som visar kompetensbilder
+const dialogContent = document.querySelector("#image-dialog-content");       // hämtar dialogens innehåll, där bilden ska visas
+const closeImageDialog = document.querySelector("#close-image-dialog");      // hämtar dialogens stängknapp
+const skillImageButtons = document.querySelectorAll(".skill-image-button");  // hämtar alla knappar som öppnar en kompetensbild
 
 function openSkillImage(event) {
-    // currentTarget är knappen som händelselyssnaren sitter på,
-    // även om besökaren klickade på bilden inuti knappen.
-    const button = event.currentTarget;
+    const button = event.currentTarget;                 // hämtar knappen som besökaren klickade på
+    const image = button.querySelector(".skill-icon");  // hämtar bilden som ska visas i dialogen
+    const imageCopy = image.cloneNode(true);            // skapar en kopia av bilden
 
-    // Hämtar knappens bild eller AI-symbol.
-    const image = button.querySelector(".skill-icon");
+    dialogContent.replaceChildren(imageCopy);                // tar bort tidigare innehåll och lägger till den nya bilden
 
-    // Skapar en kopia så att originalet blir kvar i kortet.
-    // true betyder att även elementets innehåll kopieras,
-    // exempelvis emojin inuti AI-symbolens span.
-    const imageCopy = image.cloneNode(true);
-
-    // Ersätter dialogens tidigare innehåll med den nya kopian.
-    dialogContent.replaceChildren(imageCopy);
-
-    // Öppnar dialogen ovanpå sidan.
-    // Resten av sidan kan inte användas förrän dialogen stängs.
-    imageDialog.showModal();
+    imageDialog.showModal();                                // Öppnar dialogen ovanpå sidan. resten blir inaktiverat tills dialogen stängs.
 }
 
-// Går igenom knapparna och kopplar varje knapp till samma funktion.
 skillImageButtons.forEach(function (button) {
-    button.addEventListener("click", openSkillImage);
+    button.addEventListener("click", openSkillImage);       // Går igenom och kopplar varje knapp till funktionen som öppnar kompetensbilden.
 });
-
-// Stänger dialogen när stängknappen används.
 closeImageDialog.addEventListener("click", function () {
-    imageDialog.close();
+    imageDialog.close();                                    // Stänger dialogen med stängknappen och återställer sidan till normalt läge.
 });
 
-// Escape hanteras automatiskt av webbläsarens dialogfunktion.
-// Slut Bilddialog
 
-// Start Mobilmeny och sidhuvudets höjd
+// Mobilmeny och sidhuvudets höjd
+const menuToggle = document.querySelector("#menu-toggle");  // hämtar knappen som öppnar/stänger mobilmenyn
+const mainNav = document.querySelector("#main-nav");        // hämtar navigationen som innehåller menylänkarna
+const siteHeader = document.querySelector("header");        // hämtar sidhuvudet.
+const mobileView = window.matchMedia("(max-width: 700px)"); // Håller koll på om fönstret är smalare än 700px, samma som mobilmenyn använder i CSS.
 
-// Hämtar menyknappen, navigationen och sidhuvudet.
-const menuToggle = document.querySelector("#menu-toggle");
-const mainNav = document.querySelector("#main-nav");
-const siteHeader = document.querySelector("header");
+document.documentElement.classList.add("js");               //lägger till klass js på html elementet, så att CSS kan aktivera mobilmenyn.
 
-// Bevakar samma breddgräns som mobilmenyn använder i CSS.
-const mobileView = window.matchMedia("(max-width: 700px)");
-
-// Lägger klassen js på html-elementet.
-// CSS använder klassen för att aktivera den hopfällbara mobilmenyn.
-document.documentElement.classList.add("js");
-
-
-// Start Mätning av sidhuvudets höjd
-
+// Mätning av sidhuvudets höjd
 function updateHeaderHeight() {
-    // När mobilmenyn är öppen blir sidhuvudet högre.
-    // Vi behåller då det tidigare värdet för den stängda menyn.
+
     if (mainNav.classList.contains("is-open")) {
-        return;
+        return;                                                 // Avbryter mätningen om menyn är öppen.
     }
 
-    // Mäter sidhuvudets aktuella höjd i pixlar.
-    const height = siteHeader.getBoundingClientRect().height;
+    const height = siteHeader.getBoundingClientRect().height;   //hämtar sidhuvudets höjd i pixlar. 
 
-    // Uppdaterar CSS-variabeln som används för avsnittens höjd
-    // och avståndet vid hopp via menylänkar.
-    // `${height}px` skapar exempelvis texten "77.2px".
-    document.documentElement.style.setProperty(
-        "--header-height",
-        `${height}px`
+    document.documentElement.style.setProperty(                 // uppdaterar CSS-variabeln 
+        "--header-height", // 
+        `${height}px` //
     );
 }
 
-// Kör mätningen när sidhuvudets storlek ändras,
-// exempelvis när innehållet behöver byta rad.
-const headerObserver = new ResizeObserver(updateHeaderHeight);
-headerObserver.observe(siteHeader);
-
-// Mäter också direkt när den här koden körs.
-updateHeaderHeight();
-
-// Slut Mätning av sidhuvudets höjd
+const headerObserver = new ResizeObserver(updateHeaderHeight);  //Kör mätning när sidhuvudet ändrar storlek.
+headerObserver.observe(siteHeader);                             //håller koll på vad som ska observeras 
+updateHeaderHeight();                                           // Mäter sidhuvudets höjd direkt när sidan laddas.
 
 
-// Start Öppna och stänga mobilmenyn
 
+// Öppna och stänga mobilmenyn
 function closeMenu() {
-    // Tar bort klassen som gör mobilmenyn synlig.
-    mainNav.classList.remove("is-open");
-
-    // Berättar för hjälpmedel att menyn är stängd.
-    menuToggle.setAttribute("aria-expanded", "false");
-
-    // Mäter sidhuvudet igen när menyn har stängts.
-    updateHeaderHeight();
+    mainNav.classList.remove("is-open");                        // Tar bort klassen som gör mobilmenyn synlig.
+    menuToggle.setAttribute("aria-expanded", "false");          // Visar att menyn är stängd. retunerar false till HTML-attributet.
+    updateHeaderHeight();                                       // Mäter sidhuvudets höjd igen när menyn har stängts
 }
 
 menuToggle.addEventListener("click", function () {
-    // Växlar mellan öppen och stängd meny.
-    // isOpen blir true om klassen finns efter ändringen.
-    const isOpen = mainNav.classList.toggle("is-open");
-
-    // Omvandlar true eller false till text för HTML-attributet.
-    menuToggle.setAttribute("aria-expanded", String(isOpen));
+    const isOpen = mainNav.classList.toggle("is-open");         // Gör så att menyn kan öppnas och stängas.
+    menuToggle.setAttribute("aria-expanded", String(isOpen));   // Visar om menyn är öppen eller stängd. returnerar true eller false som text för HTML-attributet.
 });
 
-// Stänger mobilmenyn när besökaren väljer en navigationslänk.
-mainNav.querySelectorAll("a").forEach(function (link) {
-    link.addEventListener("click", closeMenu);
+mainNav.querySelectorAll("a").forEach(function (link) {         // Går igenom alla länkar i menyn.
+    link.addEventListener("click", closeMenu);                  // Kopplar varje länk till funktionen som stänger menyn.
 });
 
-// Stänger en öppen mobilmeny med Escape.
-document.addEventListener("keydown", function (event) {
-    // Båda villkoren måste vara uppfyllda:
-    // Escape trycktes ned OCH menyn är öppen.
-    if (event.key === "Escape" && mainNav.classList.contains("is-open")) {
+document.addEventListener("keydown", function (event) {         // Lyssnar efter nedtryckta tangenter på hela sidan.
+
+    if (event.key === "Escape" && mainNav.classList.contains("is-open")) {  // Om Escape trycktes ned och menyn är öppen
         closeMenu();
 
-        // Flyttar tillbaka tangentbordsfokus till menyknappen.
-        menuToggle.focus();
+        menuToggle.focus();                                                 //fokus på menyknappen efter stängning med esc
     }
 });
-
-// Återställer menyn när fönstret passerar gränsen 700px,
-// oavsett om det blir bredare eller smalare.
-mobileView.addEventListener("change", closeMenu);
-
-// Slut Öppna och stänga mobilmenyn
-
-// Slut Mobilmeny och sidhuvudets höjd
+mobileView.addEventListener("change", closeMenu); //Kopplar funktionen till media queryn som kontollerar om fönstret är smalare än 700px.
