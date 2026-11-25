@@ -1,5 +1,5 @@
 //Temaväxling
-const themeButton = document.querySelector("#theme-toggle");        //hittar och hämtar temaknappen, skapar en 
+const themeButton = document.querySelector("#theme-toggle");        //hittar och hämtar temaknappen 
 
 function toggleTheme() {
     const isDark = document.body.classList.toggle("dark-theme");    // växlar mellan ljust och mörkt tema
